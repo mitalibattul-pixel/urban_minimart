@@ -40,4 +40,9 @@ def register(request):
 def account(request):
     return render(request, 'account.html')
 
+<<<<<<< HEAD
 
+=======
+def dashboard(request):
+    return render(request,'admin/dashboard.html')
+>>>>>>> 6d1651d6e17de11ececd7f4637b10adfead69cac
