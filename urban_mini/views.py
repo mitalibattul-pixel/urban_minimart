@@ -39,3 +39,6 @@ def register(request):
 
 def account(request):
     return render(request, 'account.html')
+
+def dashboard(request):
+    return render(request,'admin/dashboard.html')

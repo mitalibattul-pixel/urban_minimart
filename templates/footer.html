@@ -19,7 +19,7 @@
                                             <i class="icon-placeholder"></i>
                                         </div>
                                         <div class="footer-address-info">
-                                            <p>Brooklyn, New York, United States</p>
+                                            <p>saraspur,ahmedabad,380018</p>
                                         </div>
                                     </li>
                                     <li>
@@ -27,7 +27,7 @@
                                             <i class="icon-call"></i>
                                         </div>
                                         <div class="footer-address-info">
-                                            <p><a href="tel:+0123-456789">+0123-456789</a></p>
+                                            <p><a href="tel:+0123-456789">+91 9</a></p>
                                         </div>
                                     </li>
                                     <li>
@@ -40,14 +40,14 @@
                                     </li>
                                 </ul>
                             </div>
-                            <div class="ltn__social-media mt-20">
+                           <!-- <div class="ltn__social-media mt-20">
                                 <ul>
                                     <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
                                     <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
                                     <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
                                     <li><a href="#" title="Youtube"><i class="fab fa-youtube"></i></a></li>
                                 </ul>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-xl-2 col-md-6 col-sm-6 col-12">
@@ -55,12 +55,12 @@
                             <h4 class="footer-title">Company</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="blog.html">Blog</a></li>
-                                    <li><a href="shop.html">All Products</a></li>
-                                    <li><a href="locations.html">Locations Map</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="{% url 'about' %}">About</a></li>
+                                    
+                                    <li><a href="{% url 'shop' %}">All Products</a></li>
+                                    <li><a href="{% url 'locations' %}">Locations Map</a></li>
+                                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact us</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -70,12 +70,12 @@
                             <h4 class="footer-title">Services.</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="order-tracking.html">Order tracking</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="account.html">My account</a></li>
-                                    <li><a href="about.html">Terms & Conditions</a></li>
-                                    <li><a href="about.html">Promotional Offers</a></li>
+                                    <li><a href="#">Order tracking</a></li>
+                                    <li><a href="{% url 'wishlist' %}">Wish List</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'account' %}">My account</a></li>
+                                    <li><a href="{% url 'about' %}">Terms & Conditions</a></li>
+                                    <li><a href="{% url 'about' %}">Promotional Offers</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -85,12 +85,12 @@
                             <h4 class="footer-title">Customer Care</h4>
                             <div class="footer-menu">
                                 <ul>
-                                    <li><a href="login.html">Login</a></li>
-                                    <li><a href="account.html">My account</a></li>
-                                    <li><a href="wishlist.html">Wish List</a></li>
-                                    <li><a href="order-tracking.html">Order tracking</a></li>
-                                    <li><a href="faq.html">FAQ</a></li>
-                                    <li><a href="contact.html">Contact us</a></li>
+                                    <li><a href="{% url 'login' %}">Login</a></li>
+                                    <li><a href="{% url 'account' %}">My account</a></li>
+                                    <li><a href="{% url 'wishlist' %}">Wish List</a></li>
+                                    <li><a href="#">Order tracking</a></li>
+                                    <li><a href="{% url 'faq' %}">FAQ</a></li>
+                                    <li><a href="{% url 'contact' %}">Contact us</a></li>
                                 </ul>
                             </div>
                         </div>
