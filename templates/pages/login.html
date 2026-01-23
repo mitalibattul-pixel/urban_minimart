@@ -1,301 +1,161 @@
-{% extends 'pages/base.html' %}
-{% load static %}
 
-{% block title %}home {% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <style>
+        /* Body styling */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8e6cf, #dcedc1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
 
-{% block content %}
-<!doctype html>
-<html class="no-js" lang="zxx">
+        /* Container for login card */
+        .login-container {
+            width: 100%;
+            max-width: 400px;
+            padding: 20px;
+        }
 
+        /* Card styling */
+        .login-card {
+            background: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-<!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2026 07:50:53 GMT -->
+        .login-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.25);
+        }
 
+        /* Titles */
+        .login-title {
+            color: #2e7d32;  /* dark green */
+            margin-bottom: 5px;
+            font-size: 28px;
+        }
 
+        .login-subtitle {
+            color: #4caf50;  /* light green */
+            margin-bottom: 25px;
+            font-size: 14px;
+        }
+
+        /* Input groups */
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            color: #2e7d32;
+            font-weight: 600;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #c8e6c9;
+            border-radius: 8px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        .input-group input:focus {
+            border-color: #2e7d32;
+            box-shadow: 0 0 5px rgba(46,125,50,0.5);
+        }
+
+        /* Login button */
+        .btn-login {
+            width: 100%;
+            background-color: #2e7d32;
+            color: #fff;
+            padding: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-login:hover {
+            background-color: #1b5e20;
+        }
+
+        /* Signup text */
+        .signup-text {
+            margin-top: 15px;
+            font-size: 13px;
+            color: #555;
+        }
+
+        .signup-text a {
+            color: #2e7d32;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .signup-text a:hover {
+            text-decoration: underline;
+        }
+
+        /* Error message styling */
+        .error-message {
+            background: #ffcdd2;
+            color: #b71c1c;
+            padding: 10px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            font-size: 14px;
+        }
+    </style>
+</head>
 <body>
-    <!--[if lte IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
+<div class="login-container">
+    <div class="login-card">
+        <h2 class="login-title">Welcome Back</h2>
+        <p class="login-subtitle">Login to your account</p>
 
-    <!-- Add your site or application content here -->
+        {% if error %}
+            <div class="error-message">{{ error }}</div>
+        {% endif %}
 
-<!-- Body main wrapper start -->
-<div class="body-wrapper">
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
 
-    
-    
-    <!-- Utilize Cart Menu Start -->
-    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
-        <div class="ltn__utilize-menu-inner ltn__scrollbar">
-            <div class="ltn__utilize-menu-head">
-                <span class="ltn__utilize-menu-title">Cart</span>
-                <button class="ltn__utilize-close">×</button>
-            </div>
-            <div class="mini-cart-product-area ltn__scrollbar">
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/1.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Red Hot Tomato</a></h6>
-                        <span class="mini-cart-quantity">1 x $65.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/2.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Vegetables Juices</a></h6>
-                        <span class="mini-cart-quantity">1 x $85.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/3.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Orange Sliced Mix</a></h6>
-                        <span class="mini-cart-quantity">1 x $92.00</span>
-                    </div>
-                </div>
-                <div class="mini-cart-item clearfix">
-                    <div class="mini-cart-img">
-                        <a href="#"><img src="img/product/4.png" alt="Image"></a>
-                        <span class="mini-cart-item-delete"><i class="icon-cancel"></i></span>
-                    </div>
-                    <div class="mini-cart-info">
-                        <h6><a href="#">Orange Fresh Juice</a></h6>
-                        <span class="mini-cart-quantity">1 x $68.00</span>
-                    </div>
-                </div>
-            </div>
-            <div class="mini-cart-footer">
-                <div class="mini-cart-sub-total">
-                    <h5>Subtotal: <span>$310.00</span></h5>
-                </div>
-                <div class="btn-wrapper">
-                    <a href="cart.html" class="theme-btn-1 btn btn-effect-1">View Cart</a>
-                    <a href="cart.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
-                </div>
-                <p>Free Shipping on All Orders Over $100!</p>
+            <div class="input-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
             </div>
 
-        </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="btn-login">Login</button>
+
+            <p class="signup-text">
+                Don't have an account? <a href="{% url 'register' %}">Sign Up</a>
+            </p>
+        </form>
     </div>
-    <!-- Utilize Cart Menu End -->
-
-    <!-- Utilize Mobile Menu Start -->
-    <div id="ltn__utilize-mobile-menu" class="ltn__utilize ltn__utilize-mobile-menu">
-        <div class="ltn__utilize-menu-inner ltn__scrollbar">
-            <div class="ltn__utilize-menu-head">
-                <div class="site-logo">
-                    <a href="index-2.html"><img src="img/logo.png" alt="Logo"></a>
-                </div>
-                <button class="ltn__utilize-close">×</button>
-            </div>
-            <div class="ltn__utilize-menu-search-form">
-                <form action="#">
-                    <input type="text" placeholder="Search...">
-                    <button><i class="fas fa-search"></i></button>
-                </form>
-            </div>
-            <div class="ltn__utilize-menu">
-                <ul>
-                    <li><a href="{% url 'index' %}">Home</a></li>
-                    <li><a href="{% url 'about' %}">About</a></li>
-                    <li><a href="{% url 'service' %}">Services</a></li>
-                     <li><a href="{% url 'faq' %}">FAQ</a></li>
-                    <li><a href="{% url 'locations' %}">Google Map Locations</a></li>
-                    <li><a href="{% url 'contact' %}">Contact</a></li>
-                </ul>
-            </div>
-            <div class="ltn__utilize-buttons ltn__utilize-buttons-2">
-                <ul>
-                    <li>
-                        <a href="{% url 'account' %}" title="My Account">
-                            <span class="utilize-btn-icon">
-                                <i class="far fa-user"></i>
-                            </span>
-                            My Account
-                        </a>
-                    </li>
-                    <li>
-                        <a href="wishlist.html" title="Wishlist">
-                            <span class="utilize-btn-icon">
-                                <i class="far fa-heart"></i>
-                                <sup>3</sup>
-                            </span>
-                            Wishlist
-                        </a>
-                    </li>
-                    <li>
-                        <a href="cart.html" title="Shoping Cart">
-                            <span class="utilize-btn-icon">
-                                <i class="fas fa-shopping-cart"></i>
-                                <sup>5</sup>
-                            </span>
-                            Shoping Cart
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div class="ltn__social-media-2">
-                <ul>
-                    <li><a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a></li>
-                    <li><a href="#" title="Twitter"><i class="fab fa-twitter"></i></a></li>
-                    <li><a href="#" title="Linkedin"><i class="fab fa-linkedin"></i></a></li>
-                    <li><a href="#" title="Instagram"><i class="fab fa-instagram"></i></a></li>
-                </ul>
-            </div>
-        </div>
-    </div>
-    <!-- Utilize Mobile Menu End -->
-
-    <div class="ltn__utilize-overlay"></div>
-
-    <!-- BREADCRUMB AREA START -->
-    <div class="ltn__breadcrumb-area ltn__breadcrumb-area-2 ltn__breadcrumb-color-white bg-overlay-theme-black-90 bg-image" data-bg="img/bg/9.jpg">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__breadcrumb-inner ltn__breadcrumb-inner-2 justify-content-between">
-                        <div class="section-title-area ltn__section-title-2">
-                            <h6 class="section-subtitle ltn__secondary-color">//  Welcome to our company</h6>
-                            <h1 class="section-title white-color">Account</h1>
-                        </div>
-                        <div class="ltn__breadcrumb-list">
-                            <ul>
-                                <li><a href="index-2.html">Home</a></li>
-                                <li>Login</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- BREADCRUMB AREA END -->
-
-    <!-- LOGIN AREA START -->
-    <div class="ltn__login-area pb-65">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title-area text-center">
-                        <h1 class="section-title">Sign In <br>To  Your Account</h1>
-                        <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. <br>
-                             Sit aliquid,  Non distinctio vel iste.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div class="account-login-inner">
-                        <form action="#" class="ltn__form-box contact-form-box">
-                            <input type="text" name="email" placeholder="Email*">
-                            <input type="password" name="password" placeholder="Password*">
-                            <div class="btn-wrapper mt-0">
-                                <button class="theme-btn-1 btn btn-block" type="submit">SIGN IN</button>
-                            </div>
-                            <div class="go-to-btn mt-20">
-                                <a href="#"><small>FORGOTTEN YOUR PASSWORD?</small></a>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="account-create text-center pt-50">
-                        <h4>DON'T HAVE AN ACCOUNT?</h4>
-                        <p>Add items to your wishlistget personalised recommendations <br>
-                            check out more quickly track your orders register</p>
-                        <div class="btn-wrapper">
-                            <a href="register.html" class="theme-btn-1 btn black-btn">CREATE ACCOUNT</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- LOGIN AREA END -->
-
-    <!-- FEATURE AREA START ( Feature - 3) -->
-    <div class="ltn__feature-area before-bg-bottom-2 mb--30--- plr--5">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="ltn__feature-item-box-wrap ltn__border-between-column white-bg">
-                        <div class="row">
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="ltn__feature-item ltn__feature-item-8">
-                                    <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/11.png" alt="#">
-                                    </div>
-                                    <div class="ltn__feature-info">
-                                        <h4>Curated Products</h4>
-                                        <p>Provide Curated Products for
-                                            all product over $100</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="ltn__feature-item ltn__feature-item-8">
-                                    <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/12.png" alt="#">
-                                    </div>
-                                    <div class="ltn__feature-info">
-                                        <h4>Handmade</h4>
-                                        <p>We ensure the product quality
-                                            that is our main goal</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="ltn__feature-item ltn__feature-item-8">
-                                    <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/13.png" alt="#">
-                                    </div>
-                                    <div class="ltn__feature-info">
-                                        <h4>Natural Food</h4>
-                                        <p>Return product within 3 days
-                                            for any product you buy</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6 col-12">
-                                <div class="ltn__feature-item ltn__feature-item-8">
-                                    <div class="ltn__feature-icon">
-                                        <img src="img/icons/icon-img/14.png" alt="#">
-                                    </div>
-                                    <div class="ltn__feature-info">
-                                        <h4>Free home delivery</h4>
-                                        <p>We ensure the product quality
-                                            that you can trust easily</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- FEATURE AREA END -->
-
-    
-
 </div>
-<!-- Body main wrapper end -->
-
-    <!-- All JS Plugins -->
-    <script src="/static/js/plugins.js"></script>
-    <!-- Main JS -->
-    <script src="/static/js/main.js"></script>
-  
 </body>
-
-<!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/login.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2026 07:50:53 GMT -->
 </html>
-{% endblock %}
+

@@ -22,5 +22,7 @@ from . import views
 urlpatterns = [
     path('', include('pages.urls')),        
     path("accounts/", include("accounts.urls")),
-    path("adminpanel/", views.dashboard, name="admin_dashboard"),
+    path('adminpanel/', include('adminpanel.urls')),
+    
+
 ]
