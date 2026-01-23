@@ -7,7 +7,11 @@
 <!doctype html>
 <html class="no-js" lang="zxx">
 
-
+{% if messages %}
+  {% for message in messages %}
+    <p style="color:red;">{{ message }}</p>
+  {% endfor %}
+{% endif %}
 <!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/account.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2026 07:50:50 GMT -->
 
 

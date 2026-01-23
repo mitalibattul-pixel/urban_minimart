@@ -32,16 +32,23 @@ def register(request):
 
 def login_view(request):
     if request.method == "POST":
-        email = request.POST["email"]
-        password = request.POST["password"]
+        email = request.POST['email']
+        password = request.POST['password']
 
-        try:
-            user = UserRegister.objects.get(email=email, password=password)
-            # store user info in session
+        user = UserRegister.objects.filter(
+            email=email,
+            password=password
+        ).first()
+
+        if user:
             request.session['user_id'] = user.id
-            request.session['user_email'] = user.email
-            return redirect('index')
-        except UserRegister.DoesNotExist:
-            return render(request, 'pages/login.html', {'error': 'Invalid credentials'})
-    
+            request.session['user_name'] = user.email
+
+
+            return redirect('/')   # ✅ INDEX PAGE
+        else:
+            return render(request, 'accounts/login.html', {
+                'error': 'Invalid email or password'
+            })
+
     return render(request, 'pages/login.html')
