@@ -1,0 +1,32 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block content %}
+<h2>Manage Categories</h2>
+<a href="{% url 'product:category_add' %}" class="btn btn-primary">Add New category</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>category Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for category in categories %}
+        <tr>
+            <td>{{ category.id }}</td>
+            <td>{{ category.name }}</td>
+            <td>
+                <a href="{% url 'product:category_edit' category.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'product:category_delete' category.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No category found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -21,7 +21,7 @@ def register(request):
                 phone=phone,
                 password=password
             )
-            return redirect('register')
+            return redirect('/')
         else:
             return render(request, 'register.html', {
                 'error': 'Passwords do not match'
@@ -47,7 +47,7 @@ def login_view(request):
 
             return redirect('/')   # ✅ INDEX PAGE
         else:
-            return render(request, 'accounts/login.html', {
+            return render(request, 'pages/login.html', {
                 'error': 'Invalid email or password'
             })
 

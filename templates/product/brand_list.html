@@ -1,0 +1,32 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block content %}
+<h2>Manage Brands</h2>
+<a href="{% url 'product:brand_add' %}" class="btn btn-primary">Add New Brand</a>
+
+<table class="table table-bordered mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Brand Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for brand in brands %}
+        <tr>
+            <td>{{ forloop.counter }}</td> 
+            <td>{{ brand.name }}</td>
+            <td>
+                <a href="{% url 'product:brand_edit' brand.id %}" class="btn btn-sm btn-warning">Edit</a>
+                <a href="{% url 'product:brand_delete' brand.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+            </td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="3">No brands found.</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

@@ -40,4 +40,5 @@ def register(request):
 def account(request):
     return render(request, 'pages/account.html')
 
+
 # Create your views here.

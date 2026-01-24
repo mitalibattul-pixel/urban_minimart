@@ -1,38 +1,40 @@
-    <nav class="sidebar" id="sidebar">
-        <div class="sidebar-item active">
-            <span class="material-icons">home</span>
-            <span>Dashboard</span>
-        </div>
-        <a href="{% url 'adminpanel:admin_users' %}" class="sidebar-item">
+<nav class="sidebar">
 
-    <span class="material-icons">people</span>
-    <span>Users</span>
-</a>
+    <a href="{% url 'adminpanel:dashboard' %}" class="sidebar-item active">
+        <span class="material-icons">home</span>
+        <span>Dashboard</span>
+    </a>
 
-        
-        <div class="sidebar-item">
-            <span class="material-icons">inventory</span>
-            <span>Products</span>
-        </div>
-        <div class="sidebar-item">
-            <span class="material-icons">assignment</span>
-            <span>Orders</span>
-        </div>
-        <div class="sidebar-item">
-            <span class="material-icons">folder</span>
-            <span>Categories</span>
-        </div>
-        <div class="sidebar-item">
-            <span class="material-icons">bar_chart</span>
-            <span>Reports</span>
-        </div>
-        <div class="sidebar-item">
-            <span class="material-icons">settings</span>
-            <span>Settings</span>
-        </div>
-        <hr>
-        <div class="sidebar-item">
-            <span class="material-icons">logout</span>
-            <span>Logout</span>
-        </div>
-    </nav>
+    <a href="{% url 'adminpanel:admin_users' %}" class="sidebar-item">
+        <span class="material-icons">people</span>
+        <span>Users</span>
+    </a>
+
+    <a href="{% url 'product:brand_list' %}" class="sidebar-item">
+        <span class="material-icons">inventory</span>
+        <span>Brand</span>
+    </a>
+
+    <a href="{% url 'product:category_list' %}" class="sidebar-item">
+        <span class="material-icons">folder</span>
+        <span>category</span>
+    </a>
+
+    <a href="{% url 'product:subcategory_list' %}" class="sidebar-item">
+        <span class="material-icons">folder</span>
+        <span>sub_category</span>
+    </a>
+
+    <a href="#" class="sidebar-item">
+        <span class="material-icons">settings</span>
+        <span>Settings</span>
+    </a>
+
+    <hr>
+
+    <a href="#" class="sidebar-item">
+        <span class="material-icons">logout</span>
+        <span>Logout</span>
+    </a>
+
+</nav>
