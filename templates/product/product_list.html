@@ -1,0 +1,36 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block content %}
+<h2>Product List</h2>
+<a href="{% url 'product:product_add' %}">Add Product</a>
+
+<table class="table table-bordered mt-3">
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Stock</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for p in products %}
+    <tr>
+        <td>{{ p.id }}</td>
+        <td>{{ p.product_name }}</td>
+        <td>{{ p.price }}</td>
+        <td>{{ p.stock }}</td>
+        <td>
+            <a href="{% url 'product:product_edit' p.id %}" class="btn btn-sm btn-warning">Edit</a>
+            |
+            <a href="{% url 'product:product_delete' p.id %}" class="btn btn-sm btn-danger">Delete</a>
+            |
+            <a href="{% url 'product:add_product_image' p.id %}"
+               class="btn btn-sm btn-info">
+               Manage Images
+            </a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}
+    

@@ -1,0 +1,31 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block content %}
+<h3>Add Image for {{ product.product_name }}</h3>
+
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Upload Image</button>
+</form>
+
+<hr>
+
+<h4>Uploaded Images</h4>
+
+{% for img in images %}
+    <div style="display:inline-block; margin:10px; text-align:center;">
+        <img src="{{ img.image.url }}" width="120" style="display:block; margin-bottom:5px;">
+        <form method="post" action="{% url 'product:product_image_delete' img.id %}">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-sm" 
+                    onclick="return confirm('Are you sure you want to delete this image?');">
+                Delete
+            </button>
+        </form>
+    </div>
+{% empty %}
+    <p>No images uploaded yet.</p>
+{% endfor %}
+
+{% endblock %}

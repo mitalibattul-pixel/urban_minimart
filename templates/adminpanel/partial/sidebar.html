@@ -1,6 +1,6 @@
 <nav class="sidebar">
 
-    <a href="{% url 'adminpanel:dashboard' %}" class="sidebar-item active">
+    <a href="{% url 'adminpanel:dashboard' %}" class="sidebar-item">
         <span class="material-icons">home</span>
         <span>Dashboard</span>
     </a>
@@ -10,20 +10,27 @@
         <span>Users</span>
     </a>
 
-    <a href="{% url 'product:brand_list' %}" class="sidebar-item">
+    <!-- PRODUCT DROPDOWN -->
+<div class="sidebar-dropdown">
+
+    <div class="sidebar-item dropdown-toggle" onclick="toggleProducts()">
         <span class="material-icons">inventory</span>
-        <span>Brand</span>
-    </a>
+        <span>Products</span>
+        <span class="material-icons arrow" id="productsArrow">expand_more</span>
+    </div>
 
-    <a href="{% url 'product:category_list' %}" class="sidebar-item">
-        <span class="material-icons">folder</span>
-        <span>category</span>
-    </a>
+    <div class="dropdown-menu" id="productsMenu">
+        <a href="{% url 'product:brand_list' %}">Brand</a>
+        <a href="{% url 'product:category_list' %}">Category</a>
+        <a href="{% url 'product:subcategory_list' %}">Sub Category</a>
+        <a href="{% url 'product:unit_list' %}">Unit</a>
+        <a href="{% url 'product:product_list' %}">Product</a>
+        <a href="{% url 'product:batch_list' %}">Batch</a>
+    </div>
 
-    <a href="{% url 'product:subcategory_list' %}" class="sidebar-item">
-        <span class="material-icons">folder</span>
-        <span>sub_category</span>
-    </a>
+</div>
+
+
 
     <a href="#" class="sidebar-item">
         <span class="material-icons">settings</span>
