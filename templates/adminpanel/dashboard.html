@@ -4,7 +4,8 @@
 {% block title %}home {% endblock %}
 
 {% block content %}
-<main class="main-content">
+<main class="main-content" style="align-items: center;
+    display: contents;">
         <div class="row dashboard-cards">
             <div class="col-md-3">
                 <div class="card">
@@ -105,4 +106,47 @@
             </table>
         </div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+
+    // Monthly Sales Chart
+    const salesCtx = document.getElementById('salesChart');
+    new Chart(salesCtx, {
+        type: 'bar',
+        data: {
+            labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+            datasets: [{
+                label: 'Sales (₹)',
+                data: [12000, 15000, 10000, 18000, 22000, 20000],
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+
+    // Order Status Chart
+    const orderCtx = document.getElementById('orderChart');
+    new Chart(orderCtx, {
+        type: 'pie',
+        data: {
+            labels: ['Pending', 'Delivered', 'Cancelled'],
+            datasets: [{
+                data: [8, 25, 4],
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }
+    });
+
+});
+</script>
+
 {% endblock %}
