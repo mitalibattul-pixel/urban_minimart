@@ -1,7 +1,8 @@
 from django.db import models
-import os
-from django.db import models
+from django.db.models.signals import post_delete
 from django.dispatch import receiver
+import os
+
 class Brand(models.Model):
     name = models.CharField(max_length=100)
     def __str__(self):
@@ -56,12 +57,9 @@ class ProductImage(models.Model):
         related_name='images'
     )
     image = models.ImageField(upload_to='product_images/')
-@receiver(models.signals.post_delete, sender=Product)
-def auto_delete_file_on_delete(sender, instance, **kwargs):
-    """
-    Deletes file from filesystem
-    when corresponding `Product` object is deleted.
-    """
-    if instance.image:
-        if os.path.isfile(instance.image.path):
-            os.remove(instance.image.path)
+
+
+@receiver(post_delete, sender=ProductImage)
+def auto_delete_image_on_delete(sender, instance, **kwargs):
+    if instance.image and os.path.isfile(instance.image.path):
+        os.remove(instance.image.path)

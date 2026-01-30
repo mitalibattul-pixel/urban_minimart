@@ -19,7 +19,7 @@
             <td>{{ brand.name }}</td>
             <td>
                 <a href="{% url 'product:brand_edit' brand.id %}" class="btn btn-sm btn-warning">Edit</a>
-                <a href="{% url 'product:brand_delete' brand.id %}" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?');">Delete</a>
+                <a href="{% url 'product:brand_delete' brand.id %}" class="btn btn-sm btn-danger" >Delete</a>
             </td>
         </tr>
         {% empty %}

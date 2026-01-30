@@ -1,0 +1,27 @@
+{% extends 'adminpanel/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="card shadow p-4">
+        <h4 class="text-danger mb-3">
+            Confirm Delete
+        </h4>
+
+        <p>
+            Are you sure you want to delete
+            <strong>{{ object }}</strong> ?
+        </p>
+
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                Yes, Delete
+            </button>
+            <a href="javascript:history.back()" class="btn btn-secondary">
+                Cancel
+            </a>
+        </form>
+    </div>
+</div>
+{% endblock %}

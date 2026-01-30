@@ -19,8 +19,14 @@ def locations(request):
 def contact(request):
     return render(request, 'pages/contact.html')
 
+from product.models import Product
+
 def shop(request):
-    return render(request, 'pages/shop.html')
+    products = Product.objects.filter()
+    return render(request, 'pages/shop.html', {
+        'products': products
+    })
+
 
 def product_details(request):
     return render(request, 'pages/product_details.html')
