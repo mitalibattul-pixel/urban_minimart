@@ -3,7 +3,6 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Admin Dashboard{% endblock %}</title>
 
     <link rel="stylesheet" href="{% static 'admin/css/style.css' %}">
@@ -12,33 +11,32 @@
 </head>
 <body>
 
-<div class="main-content">
+<div class="layout">
 
-    <!-- HEADER -->
-    {% include 'adminpanel/partial/header.html' %}
-
-    <!-- SIDEBAR -->
     {% include 'adminpanel/partial/sidebar.html' %}
 
-    <!-- PAGE CONTENT -->
-    {% block content %}
-    {% endblock %}
+    <div class="main-wrapper">
 
-    <!-- FOOTER -->
-    {% include 'adminpanel/partial/footer.html' %}
+        {% include 'adminpanel/partial/header.html' %}
+
+        <main class="main-content">
+            {% block content %}{% endblock %}
+        </main>
+
+        {% include 'adminpanel/partial/footer.html' %}
+
+    </div>
 
 </div>
 
 <script>
+function toggleSidebar() {
+    document.querySelector(".sidebar").classList.toggle("collapsed");
+}
 function toggleProducts() {
-    console.log("clicked"); // 👈 TEST
-
-    var menu = document.getElementById("productsMenu");
-    menu.classList.toggle("show");
+    document.getElementById("productsMenu").classList.toggle("show");
 }
 </script>
-
-
 
 </body>
 </html>

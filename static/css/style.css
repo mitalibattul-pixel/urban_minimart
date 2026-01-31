@@ -12713,3 +12713,9 @@ input.cart-plus-minus-box {
 ---------------------------------------------------- */
 
 /*# sourceMappingURL=style.css.map */
+/* FORCE LOGO SIZE */
+header .site-logo img {
+  height: 60px !important;
+  width: auto !important;
+  max-height: 60px !important;
+}

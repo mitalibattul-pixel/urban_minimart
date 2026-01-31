@@ -13,9 +13,6 @@ def service(request):
 def faq(request):
     return render(request, 'pages/faq.html')
 
-def locations(request):
-    return render(request, 'pages/locations.html')
-
 def contact(request):
     return render(request, 'pages/contact.html')
 
