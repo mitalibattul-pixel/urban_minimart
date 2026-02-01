@@ -15,16 +15,6 @@ def faq(request):
 def contact(request):
     return render(request, 'pages/contact.html')
 
-from product.models import Product
-
-def shop(request):
-    products = Product.objects.prefetch_related('images')
-
-    return render(request, 'pages/shop.html', {
-        'products': products
-    })
-
-
 def product_details(request):
     return render(request, 'pages/product_details.html')
 

@@ -10,10 +10,7 @@ urlpatterns = [
     path('category/add/', views.category_add, name='category_add'),
     path('category/edit/<int:id>/', views.category_edit, name='category_edit'),
     path('category/delete/<int:id>/', views.category_delete, name='category_delete'),
-    path('subcategories/', views.subcategory_list, name='subcategory_list'),
-    path('subcategories/add/', views.subcategory_add, name='subcategory_add'),
-    path('subcategories/edit/<int:id>/', views.subcategory_edit, name='subcategory_edit'),
-    path('subcategories/delete/<int:id>/', views.subcategory_delete, name='subcategory_delete'),
+  
     path('units/', views.unit_list, name='unit_list'),
     path('units/add/', views.unit_add, name='unit_add'),
     path('units/edit/<int:id>/', views.unit_edit, name='unit_edit'),
@@ -29,5 +26,5 @@ urlpatterns = [
     path('product/<int:pk>/images/add/', views.add_product_image, name='add_product_image'),
     path('product-image/delete/<int:image_id>/', views.product_image_delete, name='product_image_delete'),
 
-
+    path("shop/", views.shop, name="shop"),
 ]
