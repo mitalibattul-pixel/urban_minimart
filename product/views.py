@@ -237,8 +237,9 @@ def add_product_image(request, pk):
     })
 
 
-def product_image_delete(request, pk):
-    image = get_object_or_404(ProductImage, pk=pk)
+def product_image_delete(request, image_id):
+    image = get_object_or_404(ProductImage, pk=image_id)
     product_id = image.product.id
     image.delete()
     return redirect('product:add_product_image', pk=product_id)
+

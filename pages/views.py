@@ -1,6 +1,5 @@
 from django.shortcuts import render
 
-
 def index(request):
     return render(request, 'pages/index.html')
 
@@ -19,7 +18,8 @@ def contact(request):
 from product.models import Product
 
 def shop(request):
-    products = Product.objects.filter()
+    products = Product.objects.prefetch_related('images')
+
     return render(request, 'pages/shop.html', {
         'products': products
     })
@@ -42,6 +42,3 @@ def register(request):
 
 def account(request):
     return render(request, 'pages/account.html')
-
-
-# Create your views here.

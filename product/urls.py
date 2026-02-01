@@ -26,7 +26,7 @@ urlpatterns = [
     path('batches/add/', views.batch_add, name='batch_add'),
     path('batches/edit/<int:id>/', views.batch_edit, name='batch_edit'),
     path('batches/delete/<int:id>/', views.batch_delete, name='batch_delete'),
-    path('product/<int:product_id>/images/add/', views.add_product_image, name='add_product_image'),
+    path('product/<int:pk>/images/add/', views.add_product_image, name='add_product_image'),
     path('product-image/delete/<int:image_id>/', views.product_image_delete, name='product_image_delete'),
 
 
