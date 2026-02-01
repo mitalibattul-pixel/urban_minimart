@@ -1,11 +1,11 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from .models import (
-    Brand, Category, SubCategory,
+    Brand, Category, 
     UnitOfMeasurement, Product,
     Batch, ProductImage
 )
 from .forms import (
-    BrandForm, CategoryForm, SubCategoryForm,
+    BrandForm, CategoryForm,
     UnitForm, ProductForm, BatchForm, ProductImageForm
 )
 
@@ -81,34 +81,7 @@ def category_delete(request, pk):
 # SUB CATEGORY
 # ==========================
 
-def subcategory_list(request):
-    subcategories = SubCategory.objects.select_related('category')
-    return render(request, 'product/subcategory_list.html', {'subcategories': subcategories})
 
-
-def subcategory_add(request):
-    form = SubCategoryForm(request.POST or None)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('product:subcategory_list')
-    return render(request, 'product/subcategory_form.html', {'form': form})
-
-
-def subcategory_edit(request, pk):
-    subcategory = get_object_or_404(SubCategory, pk=pk)
-    form = SubCategoryForm(request.POST or None, instance=subcategory)
-    if request.method == 'POST' and form.is_valid():
-        form.save()
-        return redirect('product:subcategory_list')
-    return render(request, 'product/subcategory_form.html', {'form': form})
-
-
-def subcategory_delete(request, pk):
-    subcategory = get_object_or_404(SubCategory, pk=pk)
-    if request.method == 'POST':
-        subcategory.delete()
-        return redirect('product:subcategory_list')
-    return render(request, 'product/confirm_delete.html', {'object': subcategory})
 
 
 # ==========================
@@ -151,7 +124,7 @@ def unit_delete(request, pk):
 
 def product_list(request):
     products = Product.objects.select_related(
-        'sub_category', 'unit'
+        'category', 'unit'
     )
     return render(request, 'product/product_list.html', {'products': products})
 
@@ -242,4 +215,14 @@ def product_image_delete(request, image_id):
     product_id = image.product.id
     image.delete()
     return redirect('product:add_product_image', pk=product_id)
+
+def shop(request):
+    products = Product.objects.prefetch_related('images')
+    product_count=products.count()
+    context={
+        'products': products,
+       'product_count':product_count,
+        
+    }
+    return render(request, 'product/shop.html',context )
 

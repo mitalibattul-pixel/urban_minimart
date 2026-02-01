@@ -12,11 +12,7 @@ class Category(models.Model):
     def __str__(self):
         return self.name
 
-class SubCategory(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='subcategories')
-    name = models.CharField(max_length=100)
-    def __str__(self):
-        return self.name
+
 
 class UnitOfMeasurement(models.Model):
     name = models.CharField(max_length=50)
@@ -33,7 +29,7 @@ class Product(models.Model):
     stock = models.IntegerField()
     mfg_date = models.DateField()
     exp_date = models.DateField()
-    sub_category = models.ForeignKey(SubCategory, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
     unit = models.ForeignKey(UnitOfMeasurement, on_delete=models.CASCADE)
 
     def __str__(self):

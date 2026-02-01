@@ -4,21 +4,9 @@
 {% block title %}home {% endblock %}
 
 {% block content %}
-<!doctype html>
-<html class="no-js" lang="zxx">
 
 
-<!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2026 07:50:43 GMT -->
 
-
-<body>
-    <!--[if lte IE 9]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
-    <![endif]-->
-
-    <!-- Add your site or application content here -->
-
-<!-- Body main wrapper start -->
 <div class="wrapper">
 
    
@@ -196,7 +184,7 @@
                             </li>
                             <li>
                                <div class="showing-product-number text-right text-end">
-                                    <span>Showing 1–12 of 18 results</span>
+                                    <span>Showing 1-12 of {{product_count}} results</span>
                                 </div> 
                             </li>
                             <li>
@@ -258,9 +246,9 @@
                                                     {{product.price}}
                                                 </div>
                                             </div>
-                                        </div>
+                                        </div></div>
                                     {% endfor %}    
-                                    </div>
+                                    
                                     <!-- ltn__product-item -->
                                     
                                     <!--  -->
@@ -452,7 +440,7 @@
                         </div>
                         <!-- Banner Widget -->
                         <div class="widget ltn__banner-widget">
-                            <a href="{% url 'shop' %}"><img src='{% static "img/banner/banner-2.jpg" %}' alt="#"></a>
+                            <a href="{% url 'product:shop' %}"><img src='{% static "img/banner/banner-2.jpg" %}' alt="#"></a>
                         </div>
 
                     </aside>
@@ -726,9 +714,5 @@
     <!-- Main JS -->
     <script src="/static/js/main.js"></script>
   
-</body>
-
-<!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/shop.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 12 Jan 2026 07:50:44 GMT -->
-</html>
 {% endblock %}
 

@@ -11,10 +11,7 @@ class CategoryForm(forms.ModelForm):
         model = Category
         fields = ['name']
 
-class SubCategoryForm(forms.ModelForm):
-    class Meta:
-        model = SubCategory
-        fields = ['category', 'name']
+
 
 class UnitForm(forms.ModelForm):
     class Meta:
