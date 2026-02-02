@@ -1,7 +1,12 @@
 from django.shortcuts import render
+from product.models import Category
 
 def index(request):
-    return render(request, 'pages/index.html')
+    categories = Category.objects.all()
+    print("INDEX VIEW CALLED", categories.count())
+    return render(request, 'pages/index.html', {
+        'categories': categories
+    })
 
 def about(request):
     return render(request, 'pages/about.html')

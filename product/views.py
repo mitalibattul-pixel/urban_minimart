@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from .models import Category
 from .models import (
     Brand, Category, 
     UnitOfMeasurement, Product,
@@ -75,13 +76,6 @@ def category_delete(request, pk):
         category.delete()
         return redirect('product:category_list')
     return render(request, 'product/confirm_delete.html', {'object': category})
-
-
-# ==========================
-# SUB CATEGORY
-# ==========================
-
-
 
 
 # ==========================
@@ -216,13 +210,23 @@ def product_image_delete(request, image_id):
     image.delete()
     return redirect('product:add_product_image', pk=product_id)
 
-def shop(request):
-    products = Product.objects.prefetch_related('images')
-    product_count=products.count()
-    context={
+def shop(request, category_slug=None):
+    products = None
+    categories = Category.objects.all()
+
+    if category_slug:
+        category = get_object_or_404(Category, slug=category_slug)
+        products = Product.objects.filter(category=category).prefetch_related('images')
+    else:
+        products = Product.objects.all().prefetch_related('images')
+
+    context = {
+        'categories': categories,
         'products': products,
-       'product_count':product_count,
-        
+        'product_count': products.count(),
     }
-    return render(request, 'product/shop.html',context )
+    return render(request, 'product/shop.html', context)
+
+
+
 
