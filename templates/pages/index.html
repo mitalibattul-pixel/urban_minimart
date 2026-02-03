@@ -269,82 +269,94 @@
                 <!-- CATEGORY TABS -->
                 <div class="ltn__tab-menu ltn__tab-menu-2 text-uppercase text-center">
                     <div class="nav">
-                     <a class="active show"
-                         data-bs-toggle="tab"
-                         href="#cat_all">
-                         All Product 
-                     </a>
-
-                 {% for category in categories %}
-                     <a data-bs-toggle="tab"
-                     href="#cat_{{ category.id }}">
-                     {{ category.name }}
-                    </a>
-                 {% endfor %}
-
-            </div>
-
-                </div>
-
-               <div class="tab-content">
-
-{% for category in categories %}
-<div class="tab-pane fade {% if forloop.first %}active show{% endif %}"
-     id="cat_{{ category.id }}">
-
-    <!-- 🔥 Slider wrapper (NO row, NO col) -->
-    <div class="ltn__tab-product-slider-one-active slick-arrow-1">
-
-        {% for product in products %}
-            {% if product.category.id == category.id %}
-            <!-- 🔥 Each product is one slide -->
-            <div class="ltn__product-item ltn__product-item-3 text-center">
-
-                <div class="product-img">
-                    <a href="{% url 'product_details' %}">
-                        {% if product.images.first %}
-                            <img src="{{ product.images.first.image.url }}" alt="">
-                        {% else %}
-                            <img src="{% static 'img/product/default.png' %}" alt="">
-                        {% endif %}
-                    </a>
-
-                    <div class="product-hover-action">
-                        <ul>
-                            <li>
-                                <a href="#"><i class="far fa-eye"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="far fa-heart"></i></a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-
-                <div class="product-info">
-                    <h2 class="product-title">
-                        <a href="{% url 'product_details'%}">
-                            {{ product.product_name }}
+                        <a class="active show" data-bs-toggle="tab" href="#cat_all">
+                            All Products
                         </a>
-                    </h2>
-                    <div class="product-price">
-                        <span>₹ {{ product.price }}</span>
+
+                        {% for category in categories %}
+                        <a data-bs-toggle="tab" href="#cat_{{ category.id }}">
+                            {{ category.name }}
+                        </a>
+                        {% endfor %}
                     </div>
                 </div>
 
-            </div>
-            {% endif %}
-        {% endfor %}
+                <!-- TAB CONTENT -->
+                <div class="tab-content">
 
-    </div>
+                    <!-- 🔥 ALL PRODUCTS TAB -->
+                    <div class="tab-pane fade active show" id="cat_all">
+                        <div class="row ltn__related-product-slider-one-active slick-arrow-1">
 
-</div>
-{% endfor %}
+                            {% for product in products %}
+                            <div class="col-lg-12">
+                                <div class="ltn__product-item ltn__product-item-3 text-center">
 
-</div>
+                                    <div class="product-img">
+                                        <a href="{% url 'product_details' %}">
+                                            {% if product.images.first %}
+                                                <img src="{{ product.images.first.image.url }}" alt="">
+                                            {% else %}
+                                                <img src="{% static 'img/product/default.png' %}" alt="">
+                                            {% endif %}
+                                        </a>
+
+                                        <div class="product-hover-action">
+                                            <ul>
+                                                <li><a href="#"><i class="far fa-eye"></i></a></li>
+                                                <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+                                                <li><a href="#"><i class="far fa-heart"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+
+                                    <div class="product-info">
+                                        <h2 class="product-title">{{ product.product_name }}</h2>
+                                        <div class="product-price">₹ {{ product.price }}</div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- 🔥 CATEGORY WISE TABS -->
+                    {% for category in categories %}
+                    <div class="tab-pane fade" id="cat_{{ category.id }}">
+                        <div class="row ltn__related-product-slider-one-active slick-arrow-1">
+
+                            {% for product in products %}
+                                {% if product.category.id == category.id %}
+                                <div class="col-lg-12">
+                                    <div class="ltn__product-item ltn__product-item-3 text-center">
+
+                                        <div class="product-img">
+                                            <a href="{% url 'product_details' %}">
+                                                {% if product.images.first %}
+                                                    <img src="{{ product.images.first.image.url }}" alt="">
+                                                {% else %}
+                                                    <img src="{% static 'img/product/default.png' %}" alt="">
+                                                {% endif %}
+                                            </a>
+                                        </div>
+
+                                        <div class="product-info">
+                                            <h2 class="product-title">{{ product.product_name }}</h2>
+                                            <div class="product-price">₹ {{ product.price }}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                {% endif %}
+                            {% endfor %}
+
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                </div>
 
             </div>
         </div>
@@ -603,7 +615,11 @@
     <script src="/static/js/plugins.js"></script>
     <!-- Main JS -->
     <script src="/static/js/main.js"></script>
-  
+  <script>
+$('a[data-bs-toggle="tab"]').on('shown.bs.tab', function () {
+    $('.ltn__related-product-slider-one-active').slick('setPosition');
+});
+</script>
 </body>
 
 <!-- Mirrored from tunatheme.com/tf/html/broccoli-preview/broccoli/index-10.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 18 Dec 2025 10:56:06 GMT -->

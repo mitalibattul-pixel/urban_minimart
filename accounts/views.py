@@ -45,7 +45,7 @@ def login_view(request):
             request.session['user_name'] = user.email
 
 
-            return redirect('/')   # ✅ INDEX PAGE
+            return redirect('/')   
         else:
             return render(request, 'pages/login.html', {
                 'error': 'Invalid email or password'
