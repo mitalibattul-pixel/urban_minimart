@@ -293,7 +293,7 @@
                                 <div class="ltn__product-item ltn__product-item-3 text-center">
 
                                     <div class="product-img">
-                                        <a href="{% url 'product_details' %}">
+                                       <a href="{{product.get_url}}">
                                             {% if product.images.first %}
                                                 <img src="{{ product.images.first.image.url }}" alt="">
                                             {% else %}
@@ -333,7 +333,8 @@
                                     <div class="ltn__product-item ltn__product-item-3 text-center">
 
                                         <div class="product-img">
-                                            <a href="{% url 'product_details' %}">
+                                           <a href="{{product.get_url}}">
+
                                                 {% if product.images.first %}
                                                     <img src="{{ product.images.first.image.url }}" alt="">
                                                 {% else %}
@@ -526,7 +527,7 @@
                                             <img src='{% static "img/product/1.png" %}' alt="#">
                                         </div>
                                          <div class="modal-product-info">
-                                            <h5><a href="{% url 'product_details' %}">Vegetables Juices</a></h5>
+                                            <h5><a href="{{product.get_url}}">>Vegetables Juices</a></h5>
                                             <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
                                             <div class="btn-wrapper">
                                                 <a href="{% url 'cart' %}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
@@ -571,7 +572,7 @@
                                             <img src='{% static "img/product/7.png" %}' alt="#">
                                         </div>
                                          <div class="modal-product-info">
-                                            <h5><a href="{% url 'product_details' %}">Vegetables Juices</a></h5>
+                                            <h5><a href="{{product.get_url}}">Vegetables Juices</a></h5>
                                             <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Wishlist</p>
                                             <div class="btn-wrapper">
                                                 <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View Wishlist</a>

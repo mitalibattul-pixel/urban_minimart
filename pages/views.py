@@ -22,8 +22,17 @@ def faq(request):
 def contact(request):
     return render(request, 'pages/contact.html')
 
-def product_details(request):
-    return render(request, 'pages/product_details.html')
+def product_details(request,category_slug, product_slug):
+    try:
+        single_product = Product.objects.get(category__slug = category_slug, slug=product_slug)
+    except Exception as e:
+        raise e
+
+    context ={
+        'single_product' : single_product,
+    }
+    return render(request,'pages/product_details.html',context)
+
 
 def cart(request):
     return render(request, 'pages/cart.html')

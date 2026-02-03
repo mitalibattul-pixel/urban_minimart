@@ -1,6 +1,7 @@
 from django.db import models
 from django.db.models.signals import post_delete
 from django.dispatch import receiver
+from django.urls import reverse
 import os
 from django.utils.text import slugify
 
@@ -41,11 +42,14 @@ class Product(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     unit = models.ForeignKey(UnitOfMeasurement, on_delete=models.CASCADE)
 
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
+
     def save(self, *args, **kwargs):
         if not self.slug:
             self.slug = slugify(self.product_name)
         super().save(*args, **kwargs)
-
+    def get_url(self):
+        return reverse('product_details',args=[self.category.slug, self.slug])
     def __str__(self):
         return self.product_name
 

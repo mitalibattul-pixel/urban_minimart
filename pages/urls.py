@@ -10,11 +10,12 @@ urlpatterns = [
     path("service/", views.service, name="service"),
     path("faq/", views.faq, name="faq"),
     path("contact/", views.contact, name="contact"),
-    path("product_details/", views.product_details, name="product_details"),
+    path("product_details/<slug:category_slug>/<slug:product_slug>/", views.product_details, name="product_details"),
     path("cart/", views.cart, name="cart"),
     path("wishlist/", views.wishlist, name="wishlist"),
     path("login/", views.login, name="login"),
     path("register/", views.register, name="register"),
     path("account/", views.account, name="account"),
+   
 
 ]

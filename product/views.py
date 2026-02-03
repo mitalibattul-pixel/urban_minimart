@@ -229,4 +229,3 @@ def shop(request, category_slug=None):
 
 
 
-

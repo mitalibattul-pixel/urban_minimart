@@ -211,7 +211,7 @@
                                     <div class="col-xl-4 col-sm-6 col-6">
                                         <div class="ltn__product-item ltn__product-item-3 text-center">
                                             <div class="product-img">
-                                                <a href="{% url 'product_details' %}"><img src="{{ product.images.first.image.url }}" alt="#"></a>
+                                                <a href="{{product.get_url}}"><img src="{{ product.images.first.image.url }}" alt="#"></a>
                                                 
                                                 <div class="product-hover-action">
                                                     <ul>
@@ -243,7 +243,7 @@
                                                         <li><a href="#"><i class="far fa-star"></i></a></li>
                                                     </ul>
                                                 </div>
-                                                <h2 class="product-title"><a href="{% url 'product_details' %}">{{product.product_name}}</a></h2>
+                                                <h2 class="product-title"><a href="{{product.get_url}}">{{product.product_name}}</a></h2>
                                                 <div class="product-price">
                                                     {{product.price}}
                                                 </div>
@@ -311,7 +311,7 @@
                                 <li>
                                     <div class="top-rated-product-item clearfix">
                                         <div class="top-rated-product-img">
-                                            <a href="{% url 'product_details' %}"><img src='{% static "img/product/1.png" %}' alt="#"></a>
+                                            <a href="{{product.get_url}}"><img src='{% static "img/product/1.png" %}' alt="#"></a>
                                         </div>
                                         <div class="top-rated-product-info">
                                             <div class="product-ratting">
@@ -323,7 +323,7 @@
                                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h6><a href="{% url 'product_details' %}">Mixel Solid Seat Cover</a></h6>
+                                            <h6><a href="{{product.get_url}}">Mixel Solid Seat Cover</a></h6>
                                             <div class="product-price">
                                                 <span>$49.00</span>
                                                 <del>$65.00</del>
@@ -334,7 +334,7 @@
                                 <li>
                                     <div class="top-rated-product-item clearfix">
                                         <div class="top-rated-product-img">
-                                            <a href="{% url 'product_details' %}"><img src='{% static "img/product/2.png" %}' alt="#"></a>
+                                            <a href="{{product.get_url}}"><img src='{% static "img/product/2.png" %}' alt="#"></a>
                                         </div>
                                         <div class="top-rated-product-info">
                                             <div class="product-ratting">
@@ -346,7 +346,7 @@
                                                     <li><a href="#"><i class="fas fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h6><a href="{% url 'product_details' %}">Vegetables Juices</a></h6>
+                                            <h6><a href="{{product.get_url}}">Vegetables Juices</a></h6>
                                             <div class="product-price">
                                                 <span>$49.00</span>
                                                 <del>$65.00</del>
@@ -357,7 +357,7 @@
                                 <li>
                                     <div class="top-rated-product-item clearfix">
                                         <div class="top-rated-product-img">
-                                            <a href="{% url 'product_details' %}"><img src='{% static "img/product/3.png" %}' alt="#"></a>
+                                            <a href="{{product.get_url}}"><img src='{% static "img/product/3.png" %}' alt="#"></a>
                                         </div>
                                         <div class="top-rated-product-info">
                                             <div class="product-ratting">
@@ -369,7 +369,7 @@
                                                     <li><a href="#"><i class="far fa-star"></i></a></li>
                                                 </ul>
                                             </div>
-                                            <h6><a href="{% url 'product_details' %}">Coil Spring Conversion</a></h6>
+                                            <h6><a href="{{product.get_url}}">Coil Spring Conversion</a></h6>
                                             <div class="product-price">
                                                 <span>$49.00</span>
                                                 <del>$65.00</del>
@@ -583,7 +583,7 @@
                                             <img src='{% static "img/product/1.png" %}' alt="#">
                                         </div>
                                          <div class="modal-product-info">
-                                            <h5><a href="{% url 'product_details' %}">Vegetables Juices</a></h5>
+                                            <h5><a href="{{product.get_url}}">Vegetables Juices</a></h5>
                                             <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
                                             <div class="btn-wrapper">
                                                 <a href="{% url 'cart' %}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
@@ -627,7 +627,7 @@
                                             <img src='{% static "img/product/7.png" %}' alt="#">
                                         </div>
                                          <div class="modal-product-info">
-                                            <h5><a href="{% url 'product_details' %}">Vegetables Juices</a></h5>
+                                            <h5><a href="{{product.get_url}}">Vegetables Juices</a></h5>
                                             <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Wishlist</p>
                                             <div class="btn-wrapper">
                                                 <a href="{% url 'wishlist' %}" class="theme-btn-1 btn btn-effect-1">View Wishlist</a>

@@ -192,10 +192,10 @@
                                     <tr>
                                         <td class="cart-product-remove">x</td>
                                         <td class="cart-product-image">
-                                            <a href="{% url 'product_details' %}"><img src='{% static "img/product/1.png" %}' alt="#"></a>
+                                            <a href="{{product.get_url}}"><img src='{% static "img/product/1.png" %}' alt="#"></a>
                                         </td>
                                         <td class="cart-product-info">
-                                            <h4><a href="{% url 'product_details' %}">Vegetables Juices</a></h4>
+                                            <h4><a href="{{product.get_url}}">Vegetables Juices</a></h4>
                                         </td>
                                         <td class="cart-product-price">149.00</td>
                                         <td class="cart-product-quantity">
@@ -208,10 +208,10 @@
                                     <tr>
                                         <td class="cart-product-remove">x</td>
                                         <td class="cart-product-image">
-                                            <a href="{% url 'product_details' %}"><img src='{% static "img/product/2.png" %}' alt="#"></a>
+                                            <a href="{{product.get_url}}"><img src='{% static "img/product/2.png" %}' alt="#"></a>
                                         </td>
                                         <td class="cart-product-info">
-                                            <h4><a href="{% url 'product_details' %}">Orange Sliced Mix</a></h4>
+                                            <h4><a href="{{product.get_url}}">Orange Sliced Mix</a></h4>
                                         </td>
                                         <td class="cart-product-price">85.00</td>
                                         <td class="cart-product-quantity">
@@ -224,10 +224,10 @@
                                     <tr>
                                         <td class="cart-product-remove">x</td>
                                         <td class="cart-product-image">
-                                            <a href="{% url 'product_details' %}"><img src='{% static "img/product/3.png" %}' alt="#"></a>
+                                            <a href="{{product.get_url}}"><img src='{% static "img/product/3.png" %}' alt="#"></a>
                                         </td>
                                         <td class="cart-product-info">
-                                            <h4><a href="{% url 'product_details' %}">Red Hot Tomato</a></h4>
+                                            <h4><a href="{{product.get_url}}">Red Hot Tomato</a></h4>
                                         </td>
                                         <td class="cart-product-price">75.00</td>
                                         <td class="cart-product-quantity">
