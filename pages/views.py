@@ -1,13 +1,15 @@
 from django.shortcuts import render
-from product.models import Category
+from product.models import Category, Product
 
 def index(request):
     categories = Category.objects.all()
-    print("INDEX VIEW CALLED", categories.count())
-    return render(request, 'pages/index.html', {
-        'categories': categories
-    })
+    products = Product.objects.prefetch_related('images', 'category')
 
+    context = {
+        'categories': categories,
+        'products': products,
+    }
+    return render(request, 'pages/index.html', context)
 def about(request):
     return render(request, 'pages/about.html')
 
