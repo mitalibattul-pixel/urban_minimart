@@ -195,35 +195,6 @@
     </div>
     <!-- SLIDER AREA END -->
 
-    <!-- BANNER AREA START -->
-    <div class="ltn__banner-area mt-120">
-        <div class="container">
-            <div class="row ltn__custom-gutter--- justify-content-center">
-                <div class="col-lg-4 col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="{% url 'product:shop' %}"><img src='{% static "img/banner/1.jpg" %}' alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="{% url 'product:shop' %}"><img src='{% static "img/banner/2.jpg" %}' alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div>
-                <!-- <div class="col-lg-4 col-md-6">
-                    <div class="ltn__banner-item">
-                        <div class="ltn__banner-img">
-                            <a href="{% url 'product:shop' %}"><img src='{% static "img/banner/1.jpg" %}' alt="Banner Image"></a>
-                        </div>
-                    </div>
-                </div> -->
-            </div>
-        </div>
-    </div>
-    <!-- BANNER AREA END -->
  
     <!-- CATEGORY AREA START -->
 <div class="ltn__category-area section-bg-1--- pt-80 pb-85">
@@ -236,8 +207,7 @@
                     <p class="white-color---">
                         A highly efficient slip-ring scanner for today's diagnostic requirements.
                     </p>
-                    <h4 style="color:red;">Total Categories: {{ categories|length }}</h4>
-                </div>
+                    
             </div>
         </div>
         
@@ -299,64 +269,82 @@
                 <!-- CATEGORY TABS -->
                 <div class="ltn__tab-menu ltn__tab-menu-2 text-uppercase text-center">
                     <div class="nav">
-                        {% for category in categories %}
-                        <a class="{% if forloop.first %}active show{% endif %}"
-                           data-bs-toggle="tab"
-                           href="#cat_{{ category.id }}">
-                            {{ category.name }}
+                     <a class="active show"
+                         data-bs-toggle="tab"
+                         href="#cat_all">
+                         All Product 
+                     </a>
+
+                 {% for category in categories %}
+                     <a data-bs-toggle="tab"
+                     href="#cat_{{ category.id }}">
+                     {{ category.name }}
+                    </a>
+                 {% endfor %}
+
+            </div>
+
+                </div>
+
+               <div class="tab-content">
+
+{% for category in categories %}
+<div class="tab-pane fade {% if forloop.first %}active show{% endif %}"
+     id="cat_{{ category.id }}">
+
+    <!-- 🔥 Slider wrapper (NO row, NO col) -->
+    <div class="ltn__tab-product-slider-one-active slick-arrow-1">
+
+        {% for product in products %}
+            {% if product.category.id == category.id %}
+            <!-- 🔥 Each product is one slide -->
+            <div class="ltn__product-item ltn__product-item-3 text-center">
+
+                <div class="product-img">
+                    <a href="{% url 'product_details' %}">
+                        {% if product.images.first %}
+                            <img src="{{ product.images.first.image.url }}" alt="">
+                        {% else %}
+                            <img src="{% static 'img/product/default.png' %}" alt="">
+                        {% endif %}
+                    </a>
+
+                    <div class="product-hover-action">
+                        <ul>
+                            <li>
+                                <a href="#"><i class="far fa-eye"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fas fa-shopping-cart"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="far fa-heart"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="product-info">
+                    <h2 class="product-title">
+                        <a href="{% url 'product_details'%}">
+                            {{ product.product_name }}
                         </a>
-                        {% endfor %}
+                    </h2>
+                    <div class="product-price">
+                        <span>₹ {{ product.price }}</span>
                     </div>
                 </div>
 
-                <!-- TAB CONTENT -->
-                <div class="tab-content">
+            </div>
+            {% endif %}
+        {% endfor %}
 
-                    {% for category in categories %}
-                    <div class="tab-pane fade {% if forloop.first %}active show{% endif %}"
-                         id="cat_{{ category.id }}">
+    </div>
 
-                        <div class="ltn__product-tab-content-inner">
-                            <div class="row ltn__tab-product-slider-one-active slick-arrow-1">
+</div>
+{% endfor %}
 
-                                {% for product in products %}
-                                    {% if product.category.id == category.id %}
-                                    <div class="col-lg-3 col-md-4 col-sm-6">
-                                        <div class="ltn__product-item ltn__product-item-3 text-center">
-
-                                            <div class="product-img">
-                                                <a href="{% url 'product_details'    %}">
-                                                    {% if product.images.first %}
-                                                        <img src="{{ product.images.first.image.url }}" alt="">
-                                                    {% else %}
-                                                        <img src="{% static 'img/product/default.png' %}" alt="">
-                                                    {% endif %}
-                                                </a>
-                                            </div>
-
-                                            <div class="product-info">
-                                                <h2 class="product-title">
-                                                    <a href="{% url 'product_details'  %}">
-                                                        {{ product.product_name }}
-                                                    </a>
-                                                </h2>
-                                                <div class="product-price">
-                                                    <span>₹ {{ product.price }}</span>
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                    {% endif %}
-                                {% endfor %}
-
-                            </div>
-                        </div>
-
-                    </div>
-                    {% endfor %}
-
-                </div>
+</div>
 
             </div>
         </div>
