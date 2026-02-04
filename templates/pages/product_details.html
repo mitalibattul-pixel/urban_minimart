@@ -240,7 +240,7 @@
                                             <h3> Out of stock </h3>
                                             {% else %}
                                             <li>
-                                                <a href="#" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                                <a href="{% url 'carts:add_cart' single_product.id %}"class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
                                                    {% endif %}
                                                     <i class="fas fa-shopping-cart"></i>
                                                     <span>ADD TO CART</span>
@@ -524,7 +524,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                        <a href="{% url 'carts:add_cart' single_product.id %}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
                                             <i class="fas fa-shopping-cart"></i>
                                         </a>
                                     </li>
@@ -712,7 +712,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                        <a href="{% url 'carts:add_cart' single_product.id %}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
                                             <i class="fas fa-shopping-cart"></i>
                                         </a>
                                     </li>
@@ -759,7 +759,7 @@
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                        <a href="{% url 'carts:add_cart' single_product.id %}" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
                                             <i class="fas fa-shopping-cart"></i>
                                         </a>
                                     </li>
@@ -917,7 +917,7 @@
                                                         </div>
                                                     </li>
                                                     <li>
-                                                        <a href="#" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
+                                                        <a href="{% url 'carts:add_cart' single_product.id %}" class="theme-btn-1 btn btn-effect-1" title="Add to Cart" data-bs-toggle="modal" data-bs-target="#add_to_cart_modal">
                                                             <i class="fas fa-shopping-cart"></i>
                                                             <span>ADD TO CART</span>
                                                         </a>
@@ -985,7 +985,7 @@
                                             <h5><a href="{{product.get_url}}">Vegetables Juices</a></h5>
                                             <p class="added-cart"><i class="fa fa-check-circle"></i>  Successfully added to your Cart</p>
                                             <div class="btn-wrapper">
-                                                <a href="{% url 'cart' %}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                                                <a href="{% url 'carts:add_cart' single_product.id  %}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
                                                 <a href="checkout.html" class="theme-btn-2 btn btn-effect-2">Checkout</a>
                                             </div>
                                          </div>

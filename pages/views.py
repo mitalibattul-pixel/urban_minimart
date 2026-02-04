@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from product.models import Category, Product
+from django.shortcuts import render, redirect, get_object_or_404
+from carts.models import Cart, CartItem
 
 def index(request):
     categories = Category.objects.all()
@@ -33,9 +35,33 @@ def product_details(request,category_slug, product_slug):
     }
     return render(request,'pages/product_details.html',context)
 
+def _cart_id(request):
+    cart = request.session.session_key
+    if not cart:
+        cart = request.session.create()
+    return cart
 
-def cart(request):
-    return render(request, 'pages/cart.html')
+from django.core.exceptions import ObjectDoesNotExist
+
+def cart(request, total=0, quantity=0, cart_items=None):
+    try:
+        cart = Cart.objects.get(cart_id=_cart_id(request))
+        cart_items = CartItem.objects.filter(cart=cart)
+
+        for cart_item in cart_items:
+            total += cart_item.product.price * cart_item.quantity
+            quantity += cart_item.quantity
+
+    except ObjectDoesNotExist:
+        cart_items = []
+
+    context = {
+        'total': total,
+        'quantity': quantity,
+        'cart_items': cart_items,
+    }
+    return render(request, 'pages/cart.html', context)
+
 
 def wishlist(request):
     return render(request, 'pages/wishlist.html')
