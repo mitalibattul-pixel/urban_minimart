@@ -22,7 +22,7 @@
             <td>{{ cart.id }}</td>
             <td>{{ cart.user|default:"Guest" }}</td>
             <td>{{ cart.items.count }}</td>
-            <td>₹ {{ cart.cart_total }}</td>
+            <td>₹ {{ cart.cartitem_set.all|length }}</td>
             <td>
                 <a href="{% url 'carts:cart_detail' cart.id %}"
                    class="btn btn-sm btn-primary">

@@ -9,7 +9,7 @@ from .forms import (
     BrandForm, CategoryForm,
     UnitForm, ProductForm, BatchForm, ProductImageForm
 )
-
+from django.core.paginator import EmptyPage,PageNotAnInteger,Paginator
 # ==========================
 # BRAND
 # ==========================
@@ -217,12 +217,18 @@ def shop(request, category_slug=None):
     if category_slug:
         category = get_object_or_404(Category, slug=category_slug)
         products = Product.objects.filter(category=category).prefetch_related('images')
+        paginator=Paginator(products,3)
+        page = request.GET.get('page')
+        paged_products=paginator.get_page(page)
     else:
-        products = Product.objects.all().prefetch_related('images')
+        products = Product.objects.all().prefetch_related('images').order_by('id')
+        paginator=Paginator(products,4)
+        page = request.GET.get('page')
+        paged_products=paginator.get_page(page)
 
     context = {
         'categories': categories,
-        'products': products,
+        'products': paged_products,
         'product_count': products.count(),
     }
     return render(request, 'product/shop.html', context)

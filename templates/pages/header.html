@@ -113,7 +113,7 @@
                                         <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                             <span class="mini-cart-icon">
                                                 <i class="icon-shopping-cart"></i>
-                                                <sup>2</sup>
+                                                <sup>{{cart_count}}</sup>
                                             </span>
                                             <h6><span>Your Cart</span> <span class="ltn__secondary-color"></span></h6>
                                         </a>
@@ -157,3 +157,45 @@
         <!-- header-bottom-area end -->
     </header>
     <!-- HEADER AREA END -->
+    <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu">
+    <div class="ltn__utilize-menu-inner ltn__custom-scrollbar">
+        <div class="ltn__utilize-menu-head">
+            <span class="ltn__utilize-menu-title">Cart</span>
+            <button class="ltn__utilize-close">×</button>
+        </div>
+        <div class="mini-cart-product-area ltn__custom-scrollbar">
+            {% if not cart_items %}
+                <div class="empty-cart-text text-center">
+                    <p>Your cart is empty.</p>
+                </div>
+            {% else %}
+                {% for cart_item in cart_items %}
+                <div class="mini-cart-item clearfix">
+                    <div class="mini-cart-img">
+                        <a href="{{ cart_item.product.get_url }}">
+                            <img src="{{ cart_item.product.images.first.image.url }}" alt="Image">
+                        </a>
+                        <span class="mini-cart-item-delete">
+                            <a href="{% url 'carts:remove_cart_item' cart_item.product.id %}"><i class="icon-cancel"></i></a>
+                        </span>
+                    </div>
+                    <div class="mini-cart-info">
+                        <h6><a href="{{ cart_item.product.get_url }}">{{ cart_item.product.product_name }}</a></h6>
+                        <span class="mini-cart-quantity">{{ cart_item.quantity }} x ₹{{ cart_item.product.price }}</span>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        </div>
+        <div class="mini-cart-footer">
+            <div class="mini-cart-sub-total">
+                <h5>Subtotal: <span>₹{{ total }}</span></h5>
+            </div>
+            <div class="btn-wrapper">
+                <a href="{% url 'cart' %}" class="theme-btn-1 btn btn-effect-1">View Cart</a>
+                <a href="{% url 'checkout' %}" class="theme-btn-2 btn btn-effect-2">Checkout</a>
+            </div>
+            <p>Free Shipping on All Orders Over ₹1000!</p>
+        </div>
+    </div>
+</div>

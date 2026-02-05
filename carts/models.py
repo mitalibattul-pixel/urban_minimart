@@ -13,7 +13,17 @@ class Cart(models.Model):
     cart_id=models.CharField(max_length=250,blank=True)
     date_added=models.DateTimeField(auto_now_add=True)
     session_key = models.CharField(max_length=40, null=True, blank=True)
+    @property
+    def items(self):
+        return CartItem.objects.filter(cart=self)
 
+    @property
+    def total_items(self):
+        return self.items.count()
+
+    @property
+    def total_amount(self):
+        return sum(item.sub_total() for item in self.items)
     def __str__(self):
         return self.cart_id
 

@@ -16,11 +16,12 @@
     </thead>
 
     <tbody>
-        {% for item in cart.items.all %}
+        {% for item in cart.cartitem_set.all %}
         <tr>
-            <td>{{ forloop.counter }}</td>
             <td>{{ item.product.product_name }}</td>
-            <td>{{ item.price }}</td>
+            
+            <td>{{ item.quantity }}</td>
+            <td>₹ {{ item.sub_total }}</td>
             <td>
                 <form method="post"
                       action="{% url 'carts:cart_item_update' item.id %}">
